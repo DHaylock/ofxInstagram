@@ -94,9 +94,32 @@ class ofxInstagram {
         //--------------------------------------------------------------
         // *
         // *                        TAG ENDPOINTS
+        // GET Info about tagged object
+        void getInfoForTags(string tagname);
     
+        // GET List of recently tagged objects
+        void getListOfTaggedObjects(string tagname,int count,string min_tagID = "",string max_tagID = "");
     
+        // GET Search Tags
+        void searchForTags(string query);
     
+        //--------------------------------------------------------------
+        // *
+        // *                        LOCATIONS ENDPOINTS
+        // GET Info about a Location
+        void getInfoAboutLocation(string location);
+        
+        // GET Recent Media from location
+        void getRecentMediaFromLocation(string location,string min_timestamp = "",string max_timestamp = "",string minID = "",string maxID = "");
+    
+        // GET Find Location ID
+        void searchForLocations(string distance,string lat,string lng, string facebook_PlacesID = "",string foursquareID = "");
+    
+        //--------------------------------------------------------------
+        // *
+        // *                        GEOGRAPHY ENDPOINTS
+        // GET Recent Media from Custom GeoID
+        void getRecentMediaFromGeoID(string geoID,int count = 20,string minID = "");
     
         deque <string> parseJSONElement(string element);
         string getJSONString();
