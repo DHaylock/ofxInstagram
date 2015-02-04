@@ -19,11 +19,18 @@ class ofxInstagram {
         // Get User Info
         void getUserInformation(string who);
         // Get User Feed use count to limit number of returns
-        void getUserFeed(int count = 20);
+        void getUserFeed(int count = 20,string minID = "",string maxID = "");
+        // Get User recent images from user pass the who as the user ID number
+        void getUserRecentMedia(string who = "self",int count = 20,string max_timestamp = "",string min_timestamp= "",string minID = "",string maxID = "");
+        // Get User Liked Media
+        void getUserLikedMedia(int count = 20,string maxLikeID = "");
+        // Get User Search for users
+        void getSearchUsers(string query = "",int count = 20);
+    
+    
         deque <string> parseJSONElement(string element);
-        // GET/users/user-id/media/recentGet the most recent media published by a user. May return a mix of both image and video types.
-        // GET/users/user-id/media/recentThe functionality is the same with the previous one, but use client_id instead of access_token
-        // GET/users/self/media/likedSee the authenticated user's list of liked media.
+    
+
         // GET/users/search
     
     
