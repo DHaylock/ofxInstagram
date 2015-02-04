@@ -7,6 +7,7 @@ void ofxInstagram::setup(string auth_token, string clientID)
     _auth_token = auth_token;
     _clientID = clientID;
 }
+#pragma mark - User Endpoints
 //--------------------------------------------------------------
 // *
 // *                        USER ENDPOINTS
@@ -101,16 +102,173 @@ void ofxInstagram::getSearchUsers(string query,int count)
     cout << "This is your request: " << url.str()  <<endl;
     cout << response.data <<endl;
 }
-
+#pragma mark - Relationship Endpoints
 //--------------------------------------------------------------
 // *
-// *                        RELATIONSHIP ENDPOINTS
-// *  GET User Follows
-// *  GET User Followed By
-// *  GET User Requested-by
-// *  GET User Relationship
-// *  POST User Modify Relationship
+// *                        MEDIA ENDPOINTS
+// *  GET who User Follows
+// *  GET who User is Followed By
+// *  GET get who User has Requested to Follow
+// *  GET relationship to User
+// *  POST change Relationship to User
 // *
+//--------------------------------------------------------------
+void ofxInstagram::getWhoUserFollows(string who)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::getWhoUserIsFollowedBy(string who)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::getWhoHasRequestedToFollow(string who)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::getRelationshipToUser(string who)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::changeRelationshipToUser(string who,string action)
+{
+    
+}
+#pragma mark - Media Endpoints
+//--------------------------------------------------------------
+// *
+// *                        MEDIA ENDPOINTS
+// *  GET Info about Media
+// *  GET Info using Shortcode
+// *  GET Search Media
+// *  GET Popular Media
+// *
+//--------------------------------------------------------------
+void ofxInstagram::getMediaInformation(string mediaID)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::getMediaInfoUsingShortcode(string shortcode)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::searchMedia(string lat, string lng,string min_timestamp,string max_timestamp,int distance)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::getPopularMedia()
+{
+    
+}
+#pragma mark - Comments Endpoints
+//--------------------------------------------------------------
+// *
+// *                        COMMENT ENDPOINTS
+// *  GET Comments on Media Object
+// *  POST Comment on Media Object
+// *  DELETE Comment on Media Object
+// *
+//--------------------------------------------------------------
+void ofxInstagram::getCommentsForMedia(string mediaID)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::postCommentOnMedia(string mediaID, string comment)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::deleteCommentOnMedia(string mediaID)
+{
+    
+}
+#pragma mark - Like Endpoints
+//--------------------------------------------------------------
+// *
+// *                        LIKE ENDPOINTS
+// *  GET List of Likes on Media Object
+// *  POST Like Media
+// *  POST unlike Media
+// *
+//--------------------------------------------------------------
+void ofxInstagram::getListOfUsersWhoLikedMedia(string mediaID)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::likeMedia(string mediaID)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::unlikeMedia(string mediaID)
+{
+    
+}
+#pragma mark - Tag Endpoints
+//--------------------------------------------------------------
+// *
+// *                        TAG ENDPOINTS
+// *  GET Info about Tags
+// *  GET List of Tagged Objects
+// *  GET Search for Tag Objects
+// *
+//--------------------------------------------------------------
+void ofxInstagram::getInfoForTags(string tagname)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::getListOfTaggedObjects(string tagname, int count, string min_tagID,string max_tagID)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::searchForTags(string query)
+{
+    
+}
+#pragma mark - Locations Endpoints
+//--------------------------------------------------------------
+// *
+// *                        LOCATIONS ENDPOINTS
+// *  GET Info about Locations
+// *  GET Recent Media from Location
+// *  GET Search for Locations by LAT,LNG
+// *
+//--------------------------------------------------------------
+void ofxInstagram::getInfoAboutLocation(string location)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::getRecentMediaFromLocation(string location, string min_timestamp,string max_timestamp,string minID,string maxID)
+{
+    
+}
+//--------------------------------------------------------------
+void ofxInstagram::searchForLocations(string distance, string lat, string lng,string facebook_PlacesID,string foursquareID)
+{
+    
+}
+#pragma mark - Geography Endpoints
+//--------------------------------------------------------------
+// *
+// *                      GEOGRAPHY ENDPOINTS
+// *  GET Media from Custom GeoID
+// *
+//--------------------------------------------------------------
+void ofxInstagram::getRecentMediaFromGeoID(string geoID,int count,string minID)
+{
+    
+}
 //--------------------------------------------------------------
 string ofxInstagram::getJSONString() const
 {
