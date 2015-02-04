@@ -109,9 +109,9 @@ void ofxInstagram::getSearchUsers(string query,int count)
 // *  POST User Modify Relationship
 // *
 //--------------------------------------------------------------
-string ofxInstagram::getJSONString()
+string ofxInstagram::getJSONString() const
 {
-    return response.data;
+    return ofxJSONElement(response.data).toStyledString();
 }
 //--------------------------------------------------------------
 deque <string> ofxInstagram::parseJSONElement(string element)
