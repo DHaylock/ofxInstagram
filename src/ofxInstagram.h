@@ -8,12 +8,28 @@
 #include "ofxJSON.h"
 #define URL "https://api.instagram.com/v1/"
 
-class ofxInstagram {
+struct imageData
+{
+    string imageURL;
+    string whoTookIt;
+    string theirIcon;
+    string whenTaken;
+};
+
+class ofxInstagram : public Json::Value {
     
     public:
         // Setup Tokens Etc...
         void setup(string auth_token, string clientID);
-        void setAuthToken(string auth_token);
+    
+        deque <string> parseJSONElement(string element);
+        string getJSONString() const;
+    
+        // Testing this
+        deque<imageData>getImageData();
+
+        // Thing I Need
+        deque <string> getImageURL();
 
         //--------------------------- ENDPOINTS ----------------------\\
         //--------------------------------------------------------------
@@ -121,12 +137,10 @@ class ofxInstagram {
         // GET Recent Media from Custom GeoID
         void getRecentMediaFromGeoID(string geoID,int count = 20,string minID = "");
     
-        deque <string> parseJSONElement(string element);
-        string getJSONString();
-    
     private:
         ofxJSONElement json;
         ofHttpResponse response;
+        deque<imageData> infoFromImages;
         string _auth_token;
         string _clientID;
         string _responseData;

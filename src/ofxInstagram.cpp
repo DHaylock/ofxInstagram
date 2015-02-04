@@ -6,7 +6,6 @@ void ofxInstagram::setup(string auth_token, string clientID)
     // Set the Tokens
     _auth_token = auth_token;
     _clientID = clientID;
-
 }
 //--------------------------------------------------------------
 // *
@@ -20,7 +19,11 @@ void ofxInstagram::setup(string auth_token, string clientID)
 //--------------------------------------------------------------
 void ofxInstagram::getUserInformation(string who)
 {
-    response = ofLoadURL("https://api.instagram.com/v1/users/"+who+"/?access_token="+_auth_token);
+    stringstream url;
+    url << "https://api.instagram.com/v1/users/" << who << "/?access_token=" << _auth_token;
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    response = ofLoadURL(url.str());
 }
 //--------------------------------------------------------------
 void ofxInstagram::getUserFeed(int count,string minID,string maxID)
@@ -115,6 +118,18 @@ string ofxInstagram::getJSONString() const
 }
 //--------------------------------------------------------------
 deque <string> ofxInstagram::parseJSONElement(string element)
+{
+    deque<string>elements;
+    for(unsigned int i = 0; i < json["data"].size(); ++i)
+    {
+        std::string title  = json["data"][i]["images"]["standard_resolution"]["url"].asString();
+        cout << title << endl;
+        elements.push_back(title);
+    }
+    return elements;
+}
+//--------------------------------------------------------------
+deque <string> ofxInstagram::getImageURL()
 {
     deque<string>elements;
     for(unsigned int i = 0; i < json["data"].size(); ++i)
