@@ -374,16 +374,69 @@ void ofxInstagram::searchForTags(string query)
 //--------------------------------------------------------------
 void ofxInstagram::getInfoAboutLocation(string location)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/locations/" << location << "?access_token=" << _auth_token;
     
+    response = ofLoadURL(url.str());
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::getRecentMediaFromLocation(string location, string min_timestamp,string max_timestamp,string minID,string maxID)
 {
     
+    stringstream url;
+    url << "https://api.instagram.com/v1/locations/" << location << "/media/recent?access_token=" << _auth_token;
+    
+    if (minID.length() != 0) {
+        url << "&min_id=" << minID;
+    }
+    
+    if (maxID.length() != 0) {
+        url << "&max_id=" << maxID;
+    }
+    
+    if (min_timestamp.length() != 0) {
+        url << "&min_timestamp=" << min_timestamp;
+    }
+    
+    if (max_timestamp.length() != 0) {
+        url << "&max_timestamp=" << max_timestamp;
+    }
+    response = ofLoadURL(url.str());
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::searchForLocations(string distance, string lat, string lng,string facebook_PlacesID,string foursquareID)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/locations/search?";
+    
+    if (lat.length() != 0) {
+        url << "&lat=" << lat;
+    }
+    
+    if (lng.length() != 0) {
+        url << "&lng=" << lng;
+    }
+    
+    if (facebook_PlacesID.length() != 0) {
+        url << "&facebook_places_id=" << facebook_PlacesID;
+    }
+    
+    if (foursquareID.length() != 0) {
+        url << "&foursquare_id=" << foursquareID;
+    }
+    
+    url << "&distance=" << distance;
+    url << "&access_token=" << _auth_token;
+    response = ofLoadURL(url.str());
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
     
 }
 #pragma mark - Geography Endpoints
