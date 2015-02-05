@@ -332,12 +332,36 @@ void ofxInstagram::likeMedia(string mediaID)
         /* always cleanup */ 
         curl_easy_cleanup(curl);
     }
-    // TO DO
 }
 //--------------------------------------------------------------
 void ofxInstagram::unlikeMedia(string mediaID)
 {
-    // TO DO
+    CURL *curl;
+    CURLcode res;
+    stringstream url;
+    url << "https://api.instagram.com/v1/media/" << mediaID << "/likes";
+    
+    string acc = "access_token="+_auth_token;
+    static const char *token = acc.data();
+    
+    
+    curl = curl_easy_init();
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL,url.str().data());
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, token);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, (long)strlen(token));
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_easy_setopt(curl, CURLOPT_POST,true);
+        /* Perform the request, res will get the return code */
+        res = curl_easy_perform(curl);
+        /* Check for errors */
+        if(res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n",
+                    curl_easy_strerror(res));
+        
+        /* always cleanup */
+        curl_easy_cleanup(curl);
+    }
 }
 #pragma mark - Tag Endpoints
 //--------------------------------------------------------------
@@ -486,7 +510,6 @@ string ofxInstagram::getJSONString() const
         return ofxJSONElement(response.data).toStyledString();
         
     }
-
 }
 //--------------------------------------------------------------
 deque <string> ofxInstagram::parseJSONElement(string element)
