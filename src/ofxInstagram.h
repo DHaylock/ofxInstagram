@@ -6,6 +6,7 @@
 
 #include "ofMain.h"
 #include "ofxJSON.h"
+#include <curl/curl.h>
 #define URL "https://api.instagram.com/v1/"
 
 struct imageData
@@ -146,6 +147,7 @@ class ofxInstagram : public Json::Value {
         void getRecentMediaFromGeoID(string geoID,int count = 20,string minID = "");
     
     private:
+//        CURL * curl;
         ofxJSONElement json;
         ofHttpResponse response;
         deque<imageData> infoFromImages;
