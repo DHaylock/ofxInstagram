@@ -1,11 +1,38 @@
 #include "ofxInstagram.h"
-
+#pragma mark - Setup
 //--------------------------------------------------------------
 void ofxInstagram::setup(string auth_token, string clientID)
 {
+    scrollValue = 0;
     // Set the Tokens
     _auth_token = auth_token;
     _clientID = clientID;
+}
+//--------------------------------------------------------------
+void ofxInstagram::drawJSON()
+{
+    ofPushMatrix();
+    ofTranslate(0, scrollValue);
+    ofDrawBitmapString(getJSONString(), 0,0);
+    ofPopMatrix();
+}
+#pragma mark - Scroll Stuff
+//--------------------------------------------------------------
+void ofxInstagram::mouseClicked(ofVec2f origin)
+{
+    clickOrigin = origin;
+}
+//--------------------------------------------------------------
+void ofxInstagram::mouseReleased(ofVec2f origin)
+{
+    releasePos = origin;
+    scrollAmount = clickOrigin - releasePos;
+    scrollValue += scrollAmount.y;
+}
+//--------------------------------------------------------------
+void ofxInstagram::resetScroll()
+{
+    scrollValue = 0;
 }
 #pragma mark - User Endpoints
 //--------------------------------------------------------------
@@ -23,8 +50,9 @@ void ofxInstagram::getUserInformation(string who)
     stringstream url;
     url << "https://api.instagram.com/v1/users/" << who << "/?access_token=" << _auth_token;
     
-    cout << "This is your request: " << url.str()  <<endl;
+    cout << "Getting Info about User: This is your request: " << url.str()  <<endl;
     response = ofLoadURL(url.str());
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::getUserFeed(int count,string minID,string maxID)
@@ -42,7 +70,7 @@ void ofxInstagram::getUserFeed(int count,string minID,string maxID)
 
     response = ofLoadURL(url.str());
     
-    cout << "This is your request: " << url.str()  <<endl;
+    cout << "Getting Users Feed: This is your request: " << url.str()  <<endl;
     json.parse(response.data);
 }
 //--------------------------------------------------------------
@@ -69,7 +97,7 @@ void ofxInstagram::getUserRecentMedia(string who,int count,string max_timestamp,
     
     response = ofLoadURL(url.str());
     
-    cout << "This is your request: " << url.str()  <<endl;
+    cout << "Getting " << who << "'s Feed: This is your request: " << url.str()  <<endl;
     json.parse(response.data);
 }
 //--------------------------------------------------------------
@@ -100,7 +128,7 @@ void ofxInstagram::getSearchUsers(string query,int count)
     response = ofLoadURL(url.str());
     
     cout << "This is your request: " << url.str()  <<endl;
-    cout << response.data <<endl;
+    json.parse(response.data);
 }
 #pragma mark - Relationship Endpoints
 //--------------------------------------------------------------
@@ -115,27 +143,52 @@ void ofxInstagram::getSearchUsers(string query,int count)
 //--------------------------------------------------------------
 void ofxInstagram::getWhoUserFollows(string who)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/users/" << who << "/follows?access_token=" << _auth_token;
+
+    response = ofLoadURL(url.str());
     
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::getWhoUserIsFollowedBy(string who)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/users/" << who << "/followed-by?access_token=" << _auth_token;
     
+    response = ofLoadURL(url.str());
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::getWhoHasRequestedToFollow(string who)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/users/" << who << "/requested-by?access_token=" << _auth_token;
     
+    response = ofLoadURL(url.str());
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::getRelationshipToUser(string who)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/users/" << who << "/relationship?access_token=" << _auth_token;
     
+    response = ofLoadURL(url.str());
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::changeRelationshipToUser(string who,string action)
 {
-    
+    //follow/unfollow/block/unblock/approve/ignore.
+    // TO DO
 }
 #pragma mark - Media Endpoints
 //--------------------------------------------------------------
@@ -149,22 +202,60 @@ void ofxInstagram::changeRelationshipToUser(string who,string action)
 //--------------------------------------------------------------
 void ofxInstagram::getMediaInformation(string mediaID)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/media/" << mediaID << "?access_token=" << _auth_token;
+    response = ofLoadURL(url.str());
     
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::getMediaInfoUsingShortcode(string shortcode)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/media/shortcode/" << shortcode << "?access_token=" << _auth_token;
+    response = ofLoadURL(url.str());
     
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::searchMedia(string lat, string lng,string min_timestamp,string max_timestamp,int distance)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/media/search?access_token=" << _auth_token;
     
+    
+    if (lat.length() != 0) {
+        url << "&lat=" << lat;
+    }
+    
+    if (lng.length() != 0) {
+        url << "&lng=" << lng;
+    }
+    
+    if (min_timestamp.length() != 0) {
+        url << "&min_timestamp=" << min_timestamp;
+    }
+    
+    if (max_timestamp.length() != 0) {
+        url << "&max_timestamp=" << max_timestamp;
+    }
+    url << "&distance=" << distance;
+    
+    response = ofLoadURL(url.str());
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::getPopularMedia()
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/media/popular?access_token=" << _auth_token;
+    response = ofLoadURL(url.str());
     
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 #pragma mark - Comments Endpoints
 //--------------------------------------------------------------
@@ -177,17 +268,22 @@ void ofxInstagram::getPopularMedia()
 //--------------------------------------------------------------
 void ofxInstagram::getCommentsForMedia(string mediaID)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/media/" << mediaID << "/comments?access_token=" << _auth_token;
+    response = ofLoadURL(url.str());
     
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::postCommentOnMedia(string mediaID, string comment)
 {
-    
+    // TO DO
 }
 //--------------------------------------------------------------
 void ofxInstagram::deleteCommentOnMedia(string mediaID)
 {
-    
+    // TO DO
 }
 #pragma mark - Like Endpoints
 //--------------------------------------------------------------
@@ -200,17 +296,22 @@ void ofxInstagram::deleteCommentOnMedia(string mediaID)
 //--------------------------------------------------------------
 void ofxInstagram::getListOfUsersWhoLikedMedia(string mediaID)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/media/" << mediaID << "/likes?access_token=" << _auth_token;
+    response = ofLoadURL(url.str());
     
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::likeMedia(string mediaID)
 {
-    
+    // TO DO
 }
 //--------------------------------------------------------------
 void ofxInstagram::unlikeMedia(string mediaID)
 {
-    
+    // TO DO
 }
 #pragma mark - Tag Endpoints
 //--------------------------------------------------------------
@@ -223,17 +324,44 @@ void ofxInstagram::unlikeMedia(string mediaID)
 //--------------------------------------------------------------
 void ofxInstagram::getInfoForTags(string tagname)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/tags/" << tagname << "?access_token=" << _auth_token;
+    response = ofLoadURL(url.str());
     
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::getListOfTaggedObjects(string tagname, int count, string min_tagID,string max_tagID)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/tags/" << tagname << "media/recent?access_token=" << _auth_token;
     
+    if (min_tagID.length() != 0) {
+        url << "&min_tag_id=" << min_tagID;
+    }
+    
+    if (max_tagID.length() != 0) {
+        url << "&max_tag_id=" << max_tagID;
+    }
+    
+    url << "&count=" << count;
+    
+    response = ofLoadURL(url.str());
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 //--------------------------------------------------------------
 void ofxInstagram::searchForTags(string query)
 {
+    stringstream url;
+    url << "https://api.instagram.com/v1/tags/search?q=" << query << "&access_token=" << _auth_token;
     
+    response = ofLoadURL(url.str());
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
 }
 #pragma mark - Locations Endpoints
 //--------------------------------------------------------------
@@ -272,7 +400,14 @@ void ofxInstagram::getRecentMediaFromGeoID(string geoID,int count,string minID)
 //--------------------------------------------------------------
 string ofxInstagram::getJSONString() const
 {
-    return ofxJSONElement(response.data).toStyledString();
+    if (response.data.size() == 0) {
+        return "";
+    }
+    else{
+        return ofxJSONElement(response.data).toStyledString();
+        
+    }
+
 }
 //--------------------------------------------------------------
 deque <string> ofxInstagram::parseJSONElement(string element)

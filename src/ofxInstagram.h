@@ -21,9 +21,17 @@ class ofxInstagram : public Json::Value {
     public:
         // Setup Tokens Etc...
         void setup(string auth_token, string clientID);
+        void draw();
+        void drawJSON();
+    
+        void resetScroll();
+        void mouseClicked(ofVec2f origin);
+        void mouseReleased(ofVec2f endPoint);
     
         deque <string> parseJSONElement(string element);
         string getJSONString() const;
+        string getErrorMessage();
+        bool isError();
     
         // Testing this
         deque<imageData>getImageData();
@@ -144,4 +152,10 @@ class ofxInstagram : public Json::Value {
         string _auth_token;
         string _clientID;
         string _responseData;
+        void clearUrl();
+    
+        int scrollValue;
+        ofVec2f scrollAmount;
+        ofVec2f clickOrigin;
+        ofVec2f releasePos;
 };
