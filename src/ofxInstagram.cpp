@@ -584,18 +584,6 @@ string ofxInstagram::getRawJSONString() const
     }
 }
 //--------------------------------------------------------------
-deque <string> ofxInstagram::parseJSONElement(string element)
-{
-    deque<string>elements;
-    for(unsigned int i = 0; i < json["data"].size(); ++i)
-    {
-        std::string title  = json["data"][i]["images"]["standard_resolution"]["url"].asString();
-//        cout << title << endl;
-        elements.push_back(title);
-    }
-    return elements;
-}
-//--------------------------------------------------------------
 deque <string> ofxInstagram::getImageURL()
 {
     deque<string>elements;
@@ -618,4 +606,14 @@ deque <string> ofxInstagram::getImageID()
         elements.push_back(title);
     }
     return elements;
+}
+//--------------------------------------------------------------
+void ofxInstagram::parseData()
+{
+    for(unsigned int i = 0; i < json["data"].size(); ++i)
+    {
+        feedData.mediaID.push_back(json["data"][i]["caption"]["id"].asString());
+        feedData.mediaCaption.push_back(json["data"][i]["caption"]["text"].asString());
+        feedData.mediaURL.push_back(json["data"][i]["images"]["standard_resolution"]["url"].asString());
+    }
 }

@@ -7,15 +7,8 @@
 #include "ofMain.h"
 #include "ofxJSON.h"
 #include <curl/curl.h>
+#include "ofxInstagramData.h"
 #define URL "https://api.instagram.com/v1/"
-
-struct imageData
-{
-    string imageURL;
-    string whoTookIt;
-    string theirIcon;
-    string whenTaken;
-};
 
 class ofxInstagram : public Json::Value {
     
@@ -23,6 +16,7 @@ class ofxInstagram : public Json::Value {
         // Setup Tokens Etc...
         void setup(string auth_token, string clientID);
         void setCertFileLocation(std::string path);
+    
         void draw();
         void drawJSON();
     
@@ -30,24 +24,30 @@ class ofxInstagram : public Json::Value {
         void mouseClicked(ofVec2f origin);
         void mouseReleased(ofVec2f endPoint);
     
-        deque <string> parseJSONElement(string element);
         string getParsedJSONString() const;
         string getRawJSONString() const;
         string getErrorMessage();
         string getPostMessage(string message);
+    
         bool isError();
     
-        // Testing this
-        deque<imageData>getImageData();
-
-        // Thing I Need
+        void parseData();
+        //--------------------------------------------------------------
+        // *
+        // *                   Get Data from the JSON
+        // *
+        //--------------------------------------------------------------
+        userfeed feedData;
         deque <string> getImageURL();
         deque <string> getImageID();
-
+        deque <string> getImageCaption();
+    
         //--------------------------- ENDPOINTS ----------------------\\
         //--------------------------------------------------------------
         // *
         // *                        USER ENDPOINTS
+        // *
+        //--------------------------------------------------------------
         // GET User Info
         void getUserInformation(string who);
     
@@ -66,6 +66,8 @@ class ofxInstagram : public Json::Value {
         //--------------------------------------------------------------
         // *
         // *                        RELATIONSHIP ENDPOINTS
+        // *
+        //--------------------------------------------------------------
         // GET User Follows
         void getWhoUserFollows(string who = "self");
     
@@ -84,6 +86,8 @@ class ofxInstagram : public Json::Value {
         //--------------------------------------------------------------
         // *
         // *                        MEDIA ENDPOINTS
+        // *
+        //--------------------------------------------------------------
         // GET Info about Media Object
         void getMediaInformation(string mediaID);
     
@@ -99,6 +103,8 @@ class ofxInstagram : public Json::Value {
         //--------------------------------------------------------------
         // *
         // *                        COMMENTS ENDPOINTS
+        // *
+        //--------------------------------------------------------------
         // GET Comments on Media Object
         void getCommentsForMedia(string mediaID);
     
@@ -111,6 +117,8 @@ class ofxInstagram : public Json::Value {
         //--------------------------------------------------------------
         // *
         // *                        LIKE ENDPOINTS
+        // *
+        //--------------------------------------------------------------
         // GET List of Users who have Liked a Media Object
         void getListOfUsersWhoLikedMedia(string mediaID);
         
@@ -123,6 +131,8 @@ class ofxInstagram : public Json::Value {
         //--------------------------------------------------------------
         // *
         // *                        TAG ENDPOINTS
+        // *
+        //--------------------------------------------------------------
         // GET Info about tagged object
         void getInfoForTags(string tagname);
     
@@ -135,6 +145,8 @@ class ofxInstagram : public Json::Value {
         //--------------------------------------------------------------
         // *
         // *                        LOCATIONS ENDPOINTS
+        // *
+        //--------------------------------------------------------------
         // GET Info about a Location
         void getInfoAboutLocation(string location);
         
@@ -147,14 +159,15 @@ class ofxInstagram : public Json::Value {
         //--------------------------------------------------------------
         // *
         // *                        GEOGRAPHY ENDPOINTS
+        // *
+        //--------------------------------------------------------------
         // GET Recent Media from Custom GeoID
         void getRecentMediaFromGeoID(string geoID,int count = 20,string minID = "");
     
     private:
-//        CURL * curl;
         ofxJSONElement json;
         ofHttpResponse response;
-        deque<imageData> infoFromImages;
+
         string _auth_token;
         string _clientID;
         string _responseData;
