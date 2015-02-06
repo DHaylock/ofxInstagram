@@ -22,6 +22,7 @@ class ofxInstagram : public Json::Value {
     public:
         // Setup Tokens Etc...
         void setup(string auth_token, string clientID);
+        void setCertFileLocation(std::string path);
         void draw();
         void drawJSON();
     
@@ -30,7 +31,8 @@ class ofxInstagram : public Json::Value {
         void mouseReleased(ofVec2f endPoint);
     
         deque <string> parseJSONElement(string element);
-        string getJSONString() const;
+        string getParsedJSONString() const;
+        string getRawJSONString() const;
         string getErrorMessage();
         bool isError();
     
@@ -154,6 +156,7 @@ class ofxInstagram : public Json::Value {
         string _auth_token;
         string _clientID;
         string _responseData;
+        string _certPath;
         void clearUrl();
     
         int scrollValue;

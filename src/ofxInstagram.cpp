@@ -1,4 +1,5 @@
 #include "ofxInstagram.h"
+#include <unistd.h>
 #pragma mark - Setup
 //--------------------------------------------------------------
 void ofxInstagram::setup(string auth_token, string clientID)
@@ -9,11 +10,17 @@ void ofxInstagram::setup(string auth_token, string clientID)
     _clientID = clientID;
 }
 //--------------------------------------------------------------
+void ofxInstagram::setCertFileLocation(std::string path)
+{
+    _certPath = path;
+    cout << _certPath << endl;
+}
+//--------------------------------------------------------------
 void ofxInstagram::drawJSON()
 {
     ofPushMatrix();
     ofTranslate(0, scrollValue);
-    ofDrawBitmapString(getJSONString(), 0,0);
+    ofDrawBitmapString(getParsedJSONString(), 0,0);
     ofPopMatrix();
 }
 #pragma mark - Scroll Stuff
@@ -278,7 +285,34 @@ void ofxInstagram::getCommentsForMedia(string mediaID)
 //--------------------------------------------------------------
 void ofxInstagram::postCommentOnMedia(string mediaID, string comment)
 {
-    // TO DO
+    CURL *curl;
+    CURLcode res;
+    stringstream url;
+    url << "https://api.instagram.com/v1/media/" << mediaID << "/comments";
+    
+    string acc = "access_token="+_auth_token;
+    static const char *token = acc.data();
+    static const char *comments = comment.data();
+    
+    curl = curl_easy_init();
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL,url.str().data());
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, token);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, (long)strlen(token));
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, comments);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, (long)strlen(comments));
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_easy_setopt(curl, CURLOPT_POST,true);
+        /* Perform the request, res will get the return code */
+        res = curl_easy_perform(curl);
+        /* Check for errors */
+        if(res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n",
+                    curl_easy_strerror(res));
+        
+        /* always cleanup */
+        curl_easy_cleanup(curl);
+    }
 }
 //--------------------------------------------------------------
 void ofxInstagram::deleteCommentOnMedia(string mediaID)
@@ -313,16 +347,22 @@ void ofxInstagram::likeMedia(string mediaID)
     
     string acc = "access_token="+_auth_token;
     static const char *token = acc.data();
-    
+    const char * file = _certPath.data();
     
     curl = curl_easy_init();
     if(curl) {
         curl_easy_setopt(curl, CURLOPT_URL,url.str().data());
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, token);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, (long)strlen(token));
-        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);
+        /* SSL Options */
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER , 1L);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST , 1L);
+
+        /* Provide CA Certs from http://curl.haxx.se/docs/caextract.html */
+        curl_easy_setopt(curl, CURLOPT_CAINFO, file);
+        curl_easy_setopt(curl, CURLOPT_VERBOSE, 0L);
         curl_easy_setopt(curl, CURLOPT_POST,true);
-        /* Perform the request, res will get the return code */
+        /* Perform the request, ¤res will get the return code */
         res = curl_easy_perform(curl);
         /* Check for errors */
         if(res != CURLE_OK)
@@ -340,15 +380,16 @@ void ofxInstagram::unlikeMedia(string mediaID)
     CURLcode res;
     stringstream url;
     url << "https://api.instagram.com/v1/media/" << mediaID << "/likes?access_token="<<_auth_token;
-//    static const char *token = acc.data();
     
+    const char * file = _certPath.data();
     
     curl = curl_easy_init();
     if(curl) {
         curl_easy_setopt(curl, CURLOPT_URL,url.str().data());
-        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 1L);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST , 1L);
+        curl_easy_setopt(curl, CURLOPT_CAINFO, file);
         curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST,"DELETE");
-        curl_easy_setopt(curl, CURLOPT_POST,true);
         /* Perform the request, res will get the return code */
         res = curl_easy_perform(curl);
         /* Check for errors */
@@ -498,7 +539,7 @@ void ofxInstagram::getRecentMediaFromGeoID(string geoID,int count,string minID)
     
 }
 //--------------------------------------------------------------
-string ofxInstagram::getJSONString() const
+string ofxInstagram::getParsedJSONString() const
 {
     if (response.data.size() == 0) {
         return "";
@@ -506,6 +547,17 @@ string ofxInstagram::getJSONString() const
     else{
         return ofxJSONElement(response.data).toStyledString();
         
+    }
+}
+//--------------------------------------------------------------
+string ofxInstagram::getRawJSONString() const
+{
+    if (response.data.size() == 0) {
+        return "";
+    }
+    else{
+        
+        return response.data.getText();
     }
 }
 //--------------------------------------------------------------

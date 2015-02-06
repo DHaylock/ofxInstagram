@@ -32,7 +32,13 @@ To start using the API, you need to get an access_token, which grants you access
 - In the oAuth uri and Website URL, type `http://127.0.0.1`.
 - **Uncheck** the Implicit OAuth check box, then **Save**.
 - This should generate some keys for you.
-- Now in your web browser, goto `https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=127.0.0.1&response_type=token&scope=likes+comments` changing out the CLIENT ID for your own. This sets the permissions of your API Calls, so you can like and comment on images.
+- Now in your web browser, goto `https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=127.0.0.1&response_type=token&scope=basic+likes+relationships` changing out the CLIENT ID for your own. This sets the permissions of your API Calls, so you can like and change user relationships. (If you want the ability to post comments you need to get permissions from instagram first. Follow this guide [https://help.instagram.com/contact/185819881608116](https://help.instagram.com/contact/185819881608116))
+
 - This will bring up a window asking you give access to the Application, click **Authorize**.
 - Then the Window should go white, look at the url bar you should now have something like `http://127.0.0.1#access_token=SOMETHING`
-- Copy that access_token and put it some where safe.
+- Copy that access_token and put it somewhere safe.
+
+#### ofxInstagram
+The addon should have some examples already for you to try, but if you want to build a new project use
+
+cp -r bin/data "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources";
