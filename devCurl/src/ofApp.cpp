@@ -18,6 +18,7 @@ void ofApp::draw()
 {
     ofBackground(0, 0, 0);
     instagram.drawJSON();
+
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key)
@@ -55,6 +56,8 @@ void ofApp::keyPressed(int key)
     if (key == 'r')
     {
         instagram.getUserRecentMedia("self",20);
+        cout << instagram.getImageURL()[0];
+
     }
     if(key == 'l')
     {

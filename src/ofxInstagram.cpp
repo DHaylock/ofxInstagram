@@ -19,6 +19,7 @@ void ofxInstagram::setCertFileLocation(std::string path)
 void ofxInstagram::drawJSON()
 {
     ofPushMatrix();
+    ofScale(0.3,0.3);
     ofTranslate(0, scrollValue);
     ofDrawBitmapString(getParsedJSONString(), 0,0);
     ofPopMatrix();
@@ -348,7 +349,7 @@ void ofxInstagram::likeMedia(string mediaID)
     string acc = "access_token="+_auth_token;
     static const char *token = acc.data();
     const char * file = _certPath.data();
-    
+    const char * chr;
     curl = curl_easy_init();
     if(curl) {
         curl_easy_setopt(curl, CURLOPT_URL,url.str().data());
@@ -357,19 +358,29 @@ void ofxInstagram::likeMedia(string mediaID)
         /* SSL Options */
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER , 1L);
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST , 1L);
-
         /* Provide CA Certs from http://curl.haxx.se/docs/caextract.html */
         curl_easy_setopt(curl, CURLOPT_CAINFO, file);
-        curl_easy_setopt(curl, CURLOPT_VERBOSE, 0L);
         curl_easy_setopt(curl, CURLOPT_POST,true);
+        
         /* Perform the request, ¤res will get the return code */
         res = curl_easy_perform(curl);
+        
         /* Check for errors */
         if(res != CURLE_OK)
             fprintf(stderr, "curl_easy_perform() failed: %s\n",
                     curl_easy_strerror(res));
         
-        /* always cleanup */ 
+//        if(CURLE_OK == res) {
+//            char *ct;
+//            /* ask for the content-type */
+//            /* http://curl.haxx.se/libcurl/c/curl_easy_getinfo.html */
+//            res = curl_easy_getinfo(curl, CURLINFO_HTTP_CODE, &ct);
+//            
+//            if((CURLE_OK == res) && ct)
+//                printf("We received Content-Type: %s\n", ct);
+//        }
+        cout << "did it" << endl;
+        /* always cleanup */
         curl_easy_cleanup(curl);
     }
 }
@@ -390,8 +401,10 @@ void ofxInstagram::unlikeMedia(string mediaID)
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST , 1L);
         curl_easy_setopt(curl, CURLOPT_CAINFO, file);
         curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST,"DELETE");
+        
         /* Perform the request, res will get the return code */
         res = curl_easy_perform(curl);
+        
         /* Check for errors */
         if(res != CURLE_OK)
             fprintf(stderr, "curl_easy_perform() failed: %s\n",
@@ -538,6 +551,12 @@ void ofxInstagram::getRecentMediaFromGeoID(string geoID,int count,string minID)
 {
     
 }
+#pragma mark - Get Elements
+//--------------------------------------------------------------
+// *
+// *                       Get Elements
+// *
+//--------------------------------------------------------------
 //--------------------------------------------------------------
 string ofxInstagram::getParsedJSONString() const
 {
@@ -546,9 +565,14 @@ string ofxInstagram::getParsedJSONString() const
     }
     else{
         return ofxJSONElement(response.data).toStyledString();
-        
     }
 }
+//--------------------------------------------------------------
+string ofxInstagram::getPostMessage(string message)
+{
+    return message;
+}
+
 //--------------------------------------------------------------
 string ofxInstagram::getRawJSONString() const
 {
@@ -556,7 +580,6 @@ string ofxInstagram::getRawJSONString() const
         return "";
     }
     else{
-        
         return response.data.getText();
     }
 }
@@ -567,7 +590,7 @@ deque <string> ofxInstagram::parseJSONElement(string element)
     for(unsigned int i = 0; i < json["data"].size(); ++i)
     {
         std::string title  = json["data"][i]["images"]["standard_resolution"]["url"].asString();
-        cout << title << endl;
+//        cout << title << endl;
         elements.push_back(title);
     }
     return elements;
@@ -579,7 +602,19 @@ deque <string> ofxInstagram::getImageURL()
     for(unsigned int i = 0; i < json["data"].size(); ++i)
     {
         std::string title  = json["data"][i]["images"]["standard_resolution"]["url"].asString();
-        cout << title << endl;
+//        cout << title << endl;
+        elements.push_back(title);
+    }
+    return elements;
+}
+//--------------------------------------------------------------
+deque <string> ofxInstagram::getImageID()
+{
+    deque<string>elements;
+    for(unsigned int i = 0; i < json["data"].size(); ++i)
+    {
+        std::string title  = json["data"][i]["caption"]["id"].asString();
+        //        cout << title << endl;
         elements.push_back(title);
     }
     return elements;

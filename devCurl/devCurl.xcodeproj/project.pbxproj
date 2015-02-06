@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63062F631A83C79700874C1F /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63062F611A83C19600874C1F /* libcurl.a */; };
+		63C8ECA41A8509160072415D /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C8ECA31A8509090072415D /* libcurl.a */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		BEDFEE7400C58EA4E412B757 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B099E6BD1199664C48B177 /* ofxJSONElement.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -72,16 +72,17 @@
 		2C7CF000B7B4F782C187C353 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = json.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/json.h; sourceTree = SOURCE_ROOT; };
 		45B576A8B106CBE71564781C /* ofxThreadedImageLoader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxThreadedImageLoader.cpp; path = ../../../addons/ofxThreadedImageLoader/src/ofxThreadedImageLoader.cpp; sourceTree = SOURCE_ROOT; };
 		61313493CDB52744E22A604D /* json-forwards.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "json-forwards.h"; path = "../../../addons/ofxJSON/libs/jsoncpp/include/json/json-forwards.h"; sourceTree = SOURCE_ROOT; };
-		63062F561A83C19600874C1F /* curl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
-		63062F571A83C19600874C1F /* curlbuild.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
-		63062F581A83C19600874C1F /* curlrules.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
-		63062F591A83C19600874C1F /* curlver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
-		63062F5A1A83C19600874C1F /* easy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
-		63062F5B1A83C19600874C1F /* mprintf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
-		63062F5C1A83C19600874C1F /* multi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
-		63062F5D1A83C19600874C1F /* stdcheaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
-		63062F5E1A83C19600874C1F /* typecheck-gcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
-		63062F611A83C19600874C1F /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
+		63C8EC951A8509090072415D /* cert.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = cert.pem; sourceTree = "<group>"; };
+		63C8EC981A8509090072415D /* curl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
+		63C8EC991A8509090072415D /* curlbuild.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
+		63C8EC9A1A8509090072415D /* curlrules.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
+		63C8EC9B1A8509090072415D /* curlver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
+		63C8EC9C1A8509090072415D /* easy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
+		63C8EC9D1A8509090072415D /* mprintf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
+		63C8EC9E1A8509090072415D /* multi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
+		63C8EC9F1A8509090072415D /* stdcheaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
+		63C8ECA01A8509090072415D /* typecheck-gcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
+		63C8ECA31A8509090072415D /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
 		6CAD18D445A8C93F422A7D82 /* ofxInstagram.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxInstagram.h; path = ../../../addons/ofxInstagram/src/ofxInstagram.h; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -114,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63062F631A83C79700874C1F /* libcurl.a in Frameworks */,
+				63C8ECA41A8509160072415D /* libcurl.a in Frameworks */,
 				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
@@ -182,52 +183,61 @@
 			name = json;
 			sourceTree = "<group>";
 		};
-		63062F531A83C19600874C1F /* libcurl */ = {
+		63C8EC931A8509090072415D /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				63062F541A83C19600874C1F /* include */,
-				63062F5F1A83C19600874C1F /* lib */,
+				63C8EC941A8509090072415D /* libcurl */,
 			);
-			name = libcurl;
-			path = ../libcurl;
+			name = libs;
+			path = ../libs;
 			sourceTree = "<group>";
 		};
-		63062F541A83C19600874C1F /* include */ = {
+		63C8EC941A8509090072415D /* libcurl */ = {
 			isa = PBXGroup;
 			children = (
-				63062F551A83C19600874C1F /* curl */,
+				63C8EC951A8509090072415D /* cert.pem */,
+				63C8EC961A8509090072415D /* include */,
+				63C8ECA11A8509090072415D /* lib */,
+			);
+			path = libcurl;
+			sourceTree = "<group>";
+		};
+		63C8EC961A8509090072415D /* include */ = {
+			isa = PBXGroup;
+			children = (
+				63C8EC971A8509090072415D /* curl */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		63062F551A83C19600874C1F /* curl */ = {
+		63C8EC971A8509090072415D /* curl */ = {
 			isa = PBXGroup;
 			children = (
-				63062F561A83C19600874C1F /* curl.h */,
-				63062F571A83C19600874C1F /* curlbuild.h */,
-				63062F581A83C19600874C1F /* curlrules.h */,
-				63062F591A83C19600874C1F /* curlver.h */,
-				63062F5A1A83C19600874C1F /* easy.h */,
-				63062F5B1A83C19600874C1F /* mprintf.h */,
-				63062F5C1A83C19600874C1F /* multi.h */,
-				63062F5D1A83C19600874C1F /* stdcheaders.h */,
-				63062F5E1A83C19600874C1F /* typecheck-gcc.h */,
+				63C8EC981A8509090072415D /* curl.h */,
+				63C8EC991A8509090072415D /* curlbuild.h */,
+				63C8EC9A1A8509090072415D /* curlrules.h */,
+				63C8EC9B1A8509090072415D /* curlver.h */,
+				63C8EC9C1A8509090072415D /* easy.h */,
+				63C8EC9D1A8509090072415D /* mprintf.h */,
+				63C8EC9E1A8509090072415D /* multi.h */,
+				63C8EC9F1A8509090072415D /* stdcheaders.h */,
+				63C8ECA01A8509090072415D /* typecheck-gcc.h */,
 			);
 			path = curl;
 			sourceTree = "<group>";
 		};
-		63062F5F1A83C19600874C1F /* lib */ = {
+		63C8ECA11A8509090072415D /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				63062F601A83C19600874C1F /* osx */,
+				63C8ECA21A8509090072415D /* osx */,
 			);
 			path = lib;
 			sourceTree = "<group>";
 		};
-		63062F601A83C19600874C1F /* osx */ = {
+		63C8ECA21A8509090072415D /* osx */ = {
 			isa = PBXGroup;
 			children = (
-				63062F611A83C19600874C1F /* libcurl.a */,
+				63C8ECA31A8509090072415D /* libcurl.a */,
 			);
 			path = osx;
 			sourceTree = "<group>";
@@ -235,7 +245,7 @@
 		9335AF1CFE31FFFF696CA942 /* ofxInstagram */ = {
 			isa = PBXGroup;
 			children = (
-				63062F531A83C19600874C1F /* libcurl */,
+				63C8EC931A8509090072415D /* libs */,
 				08E72D9246A97C573C30D02A /* src */,
 			);
 			name = ofxInstagram;
@@ -646,6 +656,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 					/Users/David/Desktop/of_v0.8.4_osx_release/addons/ofxInstagram/libcurl/lib/osx,
+					/Users/David/Desktop/of_v0.8.4_osx_release/addons/ofxInstagram/libs/libcurl/lib/osx,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
@@ -732,6 +743,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					/Users/David/Desktop/of_v0.8.4_osx_release/addons/ofxInstagram/libcurl/lib/osx,
+					/Users/David/Desktop/of_v0.8.4_osx_release/addons/ofxInstagram/libs/libcurl/lib/osx,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

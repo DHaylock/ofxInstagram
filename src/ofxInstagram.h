@@ -34,6 +34,7 @@ class ofxInstagram : public Json::Value {
         string getParsedJSONString() const;
         string getRawJSONString() const;
         string getErrorMessage();
+        string getPostMessage(string message);
         bool isError();
     
         // Testing this
@@ -41,6 +42,7 @@ class ofxInstagram : public Json::Value {
 
         // Thing I Need
         deque <string> getImageURL();
+        deque <string> getImageID();
 
         //--------------------------- ENDPOINTS ----------------------\\
         //--------------------------------------------------------------
