@@ -339,18 +339,15 @@ void ofxInstagram::unlikeMedia(string mediaID)
     CURL *curl;
     CURLcode res;
     stringstream url;
-    url << "https://api.instagram.com/v1/media/" << mediaID << "/likes";
-    
-    string acc = "access_token="+_auth_token;
-    static const char *token = acc.data();
+    url << "https://api.instagram.com/v1/media/" << mediaID << "/likes?access_token="<<_auth_token;
+//    static const char *token = acc.data();
     
     
     curl = curl_easy_init();
     if(curl) {
         curl_easy_setopt(curl, CURLOPT_URL,url.str().data());
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, token);
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, (long)strlen(token));
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST,"DELETE");
         curl_easy_setopt(curl, CURLOPT_POST,true);
         /* Perform the request, res will get the return code */
         res = curl_easy_perform(curl);

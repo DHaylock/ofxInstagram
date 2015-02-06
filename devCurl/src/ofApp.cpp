@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-    instagram.setup("6305138.f8a5783.36bb2b2f48d34c51a426cfb0fb554266","self");
+    instagram.setup("6305138.3bfb194.22fde2570a4e483f932eca948d7bf1e5","self");
     
 }
 //--------------------------------------------------------------
@@ -25,6 +25,12 @@ void ofApp::keyPressed(int key)
         instagram.likeMedia("912501421079932553_6305138");
 //        instagram.getUserInformation("self");
     }
+    if(key == 'd')
+    {
+        instagram.unlikeMedia("912501421079932553_6305138");
+        //        instagram.getUserInformation("self");
+    }
+
     if (key == 'r')
     {
         instagram.getUserRecentMedia("self",20);
