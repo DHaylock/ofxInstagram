@@ -16,11 +16,10 @@ void ofxInstagram::setCertFileLocation(std::string path)
     cout << _certPath << endl;
 }
 //--------------------------------------------------------------
-void ofxInstagram::drawJSON()
+void ofxInstagram::drawJSON(int x)
 {
     ofPushMatrix();
-    ofScale(0.3,0.3);
-    ofTranslate(0, scrollValue);
+    ofTranslate(x, scrollValue);
     ofDrawBitmapString(getParsedJSONString(), 0,0);
     ofPopMatrix();
 }
@@ -316,9 +315,34 @@ void ofxInstagram::postCommentOnMedia(string mediaID, string comment)
     }
 }
 //--------------------------------------------------------------
-void ofxInstagram::deleteCommentOnMedia(string mediaID)
+void ofxInstagram::deleteCommentOnMedia(string mediaID,string commentID)
 {
-    // TO DO
+    CURL *curl;
+    CURLcode res;
+    stringstream url;
+    url << "https://api.instagram.com/v1/media/" << mediaID << "/comments/" << commentID << "?access_token="<<_auth_token;
+    
+    const char * file = _certPath.data();
+    
+    curl = curl_easy_init();
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL,url.str().data());
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 1L);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST , 1L);
+        curl_easy_setopt(curl, CURLOPT_CAINFO, file);
+        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST,"DELETE");
+        
+        /* Perform the request, res will get the return code */
+        res = curl_easy_perform(curl);
+        
+        /* Check for errors */
+        if(res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n",
+                    curl_easy_strerror(res));
+        
+        /* always cleanup */
+        curl_easy_cleanup(curl);
+    }
 }
 #pragma mark - Like Endpoints
 //--------------------------------------------------------------
@@ -369,17 +393,7 @@ void ofxInstagram::likeMedia(string mediaID)
         if(res != CURLE_OK)
             fprintf(stderr, "curl_easy_perform() failed: %s\n",
                     curl_easy_strerror(res));
-        
-//        if(CURLE_OK == res) {
-//            char *ct;
-//            /* ask for the content-type */
-//            /* http://curl.haxx.se/libcurl/c/curl_easy_getinfo.html */
-//            res = curl_easy_getinfo(curl, CURLINFO_HTTP_CODE, &ct);
-//            
-//            if((CURLE_OK == res) && ct)
-//                printf("We received Content-Type: %s\n", ct);
-//        }
-        cout << "did it" << endl;
+
         /* always cleanup */
         curl_easy_cleanup(curl);
     }
@@ -572,7 +586,6 @@ string ofxInstagram::getPostMessage(string message)
 {
     return message;
 }
-
 //--------------------------------------------------------------
 string ofxInstagram::getRawJSONString() const
 {
@@ -606,14 +619,4 @@ deque <string> ofxInstagram::getImageID()
         elements.push_back(title);
     }
     return elements;
-}
-//--------------------------------------------------------------
-void ofxInstagram::parseData()
-{
-    for(unsigned int i = 0; i < json["data"].size(); ++i)
-    {
-        feedData.mediaID.push_back(json["data"][i]["caption"]["id"].asString());
-        feedData.mediaCaption.push_back(json["data"][i]["caption"]["text"].asString());
-        feedData.mediaURL.push_back(json["data"][i]["images"]["standard_resolution"]["url"].asString());
-    }
 }

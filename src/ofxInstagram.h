@@ -7,8 +7,6 @@
 #include "ofMain.h"
 #include "ofxJSON.h"
 #include <curl/curl.h>
-#include "ofxInstagramData.h"
-#define URL "https://api.instagram.com/v1/"
 
 class ofxInstagram : public Json::Value {
     
@@ -18,7 +16,7 @@ class ofxInstagram : public Json::Value {
         void setCertFileLocation(std::string path);
     
         void draw();
-        void drawJSON();
+        void drawJSON(int x);
     
         void resetScroll();
         void mouseClicked(ofVec2f origin);
@@ -37,7 +35,6 @@ class ofxInstagram : public Json::Value {
         // *                   Get Data from the JSON
         // *
         //--------------------------------------------------------------
-        userfeed feedData;
         deque <string> getImageURL();
         deque <string> getImageID();
         deque <string> getImageCaption();
@@ -112,7 +109,7 @@ class ofxInstagram : public Json::Value {
         void postCommentOnMedia(string mediaID,string comment);
     
         // DELETE Comment on Media Object
-        void deleteCommentOnMedia(string mediaID);
+        void deleteCommentOnMedia(string mediaID,string commentID);
     
         //--------------------------------------------------------------
         // *

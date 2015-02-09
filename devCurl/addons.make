@@ -1,3 +1,0 @@
-ofxThreadedImageLoader
-ofxInstagram
-ofxJSON
