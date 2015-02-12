@@ -12,6 +12,7 @@ Also drop me a line and let me know how you end up using the addon.
 ### Requirements
 
 - openFrameworks v0.8.0+
+- ofxJson
 
 ### What the addon includes
 
@@ -39,6 +40,9 @@ To start using the API, you need to get an access_token, which grants you access
 - Copy that access_token and put it somewhere safe.
 
 #### ofxInstagram
-The addon should have some examples already for you to try, but if you want to build a new project use
+The addon should have some examples already for you to try, but if you want to build a new project use the project generator.
 
-cp -r bin/data "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources";
+There is a .crt file stored in the addon folder. You will need to copy this in to the data folder of your application. This allows you to securely connect to the Instagram API. 
+
+In the xcode.proj file go to Build Phases then to Run Scripts, add the following code. This copies the data from the data folder to the data folder of the .app file. 
+`cp -r bin/data "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources";`
