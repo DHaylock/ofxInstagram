@@ -68,7 +68,6 @@
 		1FFA7CC02B856601A4C9D233 /* easy.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = easy.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/easy.h; sourceTree = SOURCE_ROOT; };
 		21BDE665988474F1B1F4D302 /* jsoncpp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = jsoncpp.cpp; path = ../../../addons/ofxJSON/libs/jsoncpp/src/jsoncpp.cpp; sourceTree = SOURCE_ROOT; };
 		22ED52AD97DAEFDE78CD38AE /* ofxInstagram.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxInstagram.cpp; path = ../../../addons/ofxInstagram/src/ofxInstagram.cpp; sourceTree = SOURCE_ROOT; };
-		260DE69B7815429F761886CE /* ca-bundle.crt */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = "ca-bundle.crt"; path = "../../../addons/ofxInstagram/src/ca-bundle.crt"; sourceTree = SOURCE_ROOT; };
 		26A541233BC6F736E758F718 /* ofxJSONElement.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxJSONElement.h; path = ../../../addons/ofxJSON/src/ofxJSONElement.h; sourceTree = SOURCE_ROOT; };
 		2C7CF000B7B4F782C187C353 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = json.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/json.h; sourceTree = SOURCE_ROOT; };
 		35EF6A755544EF58AA5F7538 /* multi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = multi.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/multi.h; sourceTree = SOURCE_ROOT; };
@@ -138,7 +137,6 @@
 		08E72D9246A97C573C30D02A /* src */ = {
 			isa = PBXGroup;
 			children = (
-				260DE69B7815429F761886CE /* ca-bundle.crt */,
 				22ED52AD97DAEFDE78CD38AE /* ofxInstagram.cpp */,
 				6CAD18D445A8C93F422A7D82 /* ofxInstagram.h */,
 			);
