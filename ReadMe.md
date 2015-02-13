@@ -18,7 +18,9 @@ Also drop me a line and let me know how you end up using the addon.
 
 - ofxInstagram src
 - libcurl library
-- Two example applications.
+- Simple example which just returns json string
+- Example which pulls the image urls from the json
+- Example which allows you to save images from Instagram to your Data folder (this does include a ImageExtension Class)
 
 ### Getting Started
 Here are a couple of helper guides to get started with ofxInstagram.
