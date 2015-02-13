@@ -8,6 +8,15 @@
 #include "ofxJSON.h"
 #include <curl/curl.h>
 
+struct basicData
+{
+    string imageID;
+    string imageURL;
+    string user;
+    string created_at;
+    string caption;
+};
+
 class ofxInstagram : public Json::Value {
     
     public:
@@ -40,6 +49,8 @@ class ofxInstagram : public Json::Value {
         deque <string> getImageURL();
         deque <string> getImageID();
         deque <string> getImageCaption();
+    
+        deque <basicData> getBasicData();
     
         //--------------------------- ENDPOINTS ----------------------\\
         //--------------------------------------------------------------
