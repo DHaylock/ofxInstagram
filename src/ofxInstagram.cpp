@@ -41,6 +41,12 @@ void ofxInstagram::resetScroll()
 {
     scrollValue = 0;
 }
+//--------------------------------------------------------------
+void ofxInstagram::saveJson(string filename)
+{
+    json.toStyledString();
+    json.save(filename+".json");
+}
 #pragma mark - User Endpoints
 //--------------------------------------------------------------
 // *

@@ -22,6 +22,8 @@ class ofxInstagram : public Json::Value {
         void mouseClicked(ofVec2f origin);
         void mouseReleased(ofVec2f endPoint);
     
+        void saveJson(string filename);
+    
         string getParsedJSONString() const;
         string getRawJSONString() const;
         string getErrorMessage();
