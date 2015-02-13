@@ -1,6 +1,11 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
+void ofApp::exit()
+{
+    getImages.stopThread();
+}
+//--------------------------------------------------------------
 void ofApp::setup()
 {
     instagram.setup("YOUR-ACCESS-TOKEN","self");
