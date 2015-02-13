@@ -2,12 +2,12 @@
 ---
 A openFrameworks addon for Instagram API.
 
-ofxInstagram is an addon for openFrameworks (v0.8.0+) that allows users to utilise the Instagram API in C++. The addon lets you pull data from instagram such as image links, like and comments. Aswell as posting comments, liking and finding
+ofxInstagram is an addon for openFrameworks (v0.8.0+) that allows users to utilise the Instagram API in C++. The addon lets you pull data from instagram such as image links, like and comments. Aswell as posting comments, liking and finding photographs.
 
-If you would like to contribute to the addon feel free to fork, hack and mod the code.
+If you would like to contribute to the addon feel free to fork, hack and modify the code.
 Also drop me a line and let me know how you end up using the addon.
 
-@david_haylock
+[https://twitter.com/david_haylock](@david_haylock)
 
 ### Requirements
 
@@ -16,8 +16,9 @@ Also drop me a line and let me know how you end up using the addon.
 
 ### What the addon includes
 
+- ofxInstagram src
 - libcurl library
-- Example Applications
+- Two example applications.
 
 ### Getting Started
 Here are a couple of helper guides to get started with ofxInstagram.
@@ -45,3 +46,5 @@ There is a .crt file stored in the addon folder. You will need to copy this in t
 
 In the xcode.proj file go to Build Phases then to Run Scripts, add the following code. This copies the data from the data folder to the data folder of the .app file. 
 `cp -r bin/data "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources";`
+
+You'll need to add the libcurl.a file to the Link Binary with Libraries section. Found in Build Phases.
