@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxInstagram.h"
+#include "ofxThreadedImageLoader.h"
+#include "ImageExtension.h"
 
 class ofApp : public ofBaseApp{
 
@@ -17,5 +19,6 @@ class ofApp : public ofBaseApp{
         void mouseReleased(int x, int y, int button);
         
         ofxInstagram instagram;
-		
+        ofxThreadedImageLoader getImages;
+        deque<ofImageExtension> images;
 };
