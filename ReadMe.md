@@ -47,4 +47,6 @@ There is a .crt file stored in the addon folder. You will need to copy this in t
 In the xcode.proj file go to Build Phases then to Run Scripts, add the following code. This copies the data from the data folder to the data folder of the .app file. 
 `cp -r bin/data "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources";`
 
+Copy the .crt and paste it into your apps data folder.
+
 You'll need to add the libcurl.a file to the Link Binary with Libraries section. Found in Build Phases.
