@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C3D282A8-1B62-412D-80BE-54C9E1298CAA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>simple_example_savingJson</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5DB7C332A3A89035E93556A2A38BF414005BA671</key>
+		<string>https://github.com/jefftimesten/ofxJSON.git</string>
+		<key>CC3C5731C639B2B8F6D26FF1FCA2463DAEC6EBC0</key>
+		<string>https://github.com/DHaylock/ofxInstagram.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>simple_example_savingJson/simple_example_savingJson.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5DB7C332A3A89035E93556A2A38BF414005BA671</key>
+		<string>../../../../ofxJSON</string>
+		<key>CC3C5731C639B2B8F6D26FF1FCA2463DAEC6EBC0</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/DHaylock/ofxInstagram.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CC3C5731C639B2B8F6D26FF1FCA2463DAEC6EBC0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CC3C5731C639B2B8F6D26FF1FCA2463DAEC6EBC0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxInstagram</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5DB7C332A3A89035E93556A2A38BF414005BA671</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxJSON</string>
+		</dict>
+	</array>
+</dict>
+</plist>
