@@ -7,7 +7,7 @@ ofxInstagram is an addon for openFrameworks (v0.8.0+) that allows users to utili
 If you would like to contribute to the addon feel free to fork, hack and modify the code.
 Also drop me a line and let me know how you end up using the addon.
 
-[https://twitter.com/david_haylock](@david_haylock)
+[@david_haylock](https://twitter.com/david_haylock)
 
 ### Requirements
 
@@ -33,7 +33,7 @@ To start using the API, you need to get an access_token, which grants you access
 - In the oAuth uri and Website URL, type `http://127.0.0.1`.
 - **Uncheck** the Implicit OAuth check box, then **Save**.
 - This should generate some keys for you.
-- Now in your web browser, goto `https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=127.0.0.1&response_type=token&scope=basic+likes+relationships` changing out the CLIENT ID for your own. This sets the permissions of your API Calls, so you can like and change user relationships. (If you want the ability to post comments you need to get permissions from instagram first. Follow this guide [https://help.instagram.com/contact/185819881608116](https://help.instagram.com/contact/185819881608116))
+- Now in your web browser, goto `https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=http://127.0.0.1&response_type=token&scope=basic+likes+relationships` changing out the CLIENT ID for your own. This sets the permissions of your API Calls, so you can like and change user relationships. (If you want the ability to post comments you need to get permissions from instagram first. Follow this guide [https://help.instagram.com/contact/185819881608116](https://help.instagram.com/contact/185819881608116))
 
 - This will bring up a window asking you give access to the Application, click **Authorize**.
 - Then the Window should go white, look at the url bar you should now have something like `http://127.0.0.1#access_token=SOMETHING`
