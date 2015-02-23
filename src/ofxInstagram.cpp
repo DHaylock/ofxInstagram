@@ -456,7 +456,7 @@ void ofxInstagram::getInfoForTags(string tagname)
 void ofxInstagram::getListOfTaggedObjects(string tagname, int count, string min_tagID,string max_tagID)
 {
     stringstream url;
-    url << "https://api.instagram.com/v1/tags/" << tagname << "media/recent?access_token=" << _auth_token;
+    url << "https://api.instagram.com/v1/tags/" << tagname << "/media/recent?access_token=" << _auth_token;
     
     if (min_tagID.length() != 0) {
         url << "&min_tag_id=" << min_tagID;
