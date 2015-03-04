@@ -17,6 +17,5 @@ class ofApp : public ofBaseApp{
         void mouseReleased(int x, int y, int button);
         
         ofxInstagram instagram;
-    
-		
+        vector<string> paginationIds;
 };

@@ -16,6 +16,9 @@ void ofApp::draw()
 {
     ofBackground(0);
     instagram.drawJSON(10);
+    for (int i = 0; i < paginationIds.size(); i++) {
+        ofDrawBitmapStringHighlight(paginationIds[i], 5,10+(i*15));
+    }
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key)
@@ -35,6 +38,17 @@ void ofApp::keyPressed(int key)
             break;
         case 'f':
             instagram.getUserFeed();
+            break;
+        case 't':
+            if (paginationIds.empty()) {
+                instagram.getListOfTaggedObjectsNormal("museums", 30);
+                paginationIds.push_back(instagram.getMaxIdForPagination());
+            }
+            else{
+                instagram.getListOfTaggedObjectsPagination("museums", 30,paginationIds.back());
+                paginationIds.push_back(instagram.getMaxIdForPagination());
+            }
+            
             break;
         default:
             break;
