@@ -85,6 +85,7 @@ void ofxInstagram::getUserFeed(int count,string minID,string maxID)
     
     cout << "Getting Users Feed: This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
 }
 //--------------------------------------------------------------
 void ofxInstagram::getUserRecentMedia(string who,int count,string max_timestamp,string min_timestamp,string minID,string maxID)
@@ -112,6 +113,8 @@ void ofxInstagram::getUserRecentMedia(string who,int count,string max_timestamp,
     cout << response.data << endl;
     cout << "Getting " << who << "'s Feed: This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
+    cout << _paginationID << endl;
 }
 //--------------------------------------------------------------
 void ofxInstagram::getUserLikedMedia(int count,string maxLikeID)
@@ -127,6 +130,8 @@ void ofxInstagram::getUserLikedMedia(int count,string maxLikeID)
     
     cout << "This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
+
 }
 //--------------------------------------------------------------
 void ofxInstagram::getSearchUsers(string query,int count)
@@ -259,6 +264,7 @@ void ofxInstagram::searchMedia(string lat, string lng,string min_timestamp,strin
     response = ofLoadURL(url.str());
     cout << "This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
 }
 //--------------------------------------------------------------
 void ofxInstagram::getPopularMedia()
@@ -451,9 +457,10 @@ void ofxInstagram::getInfoForTags(string tagname)
     
     cout << "This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
 }
 //--------------------------------------------------------------
-void ofxInstagram::getListOfTaggedObjects(string tagname, int count, string min_tagID,string max_tagID)
+void ofxInstagram::getListOfTaggedObjectsNormal(string tagname, int count, string min_tagID,string max_tagID)
 {
     stringstream url;
     url << "https://api.instagram.com/v1/tags/" << tagname << "/media/recent?access_token=" << _auth_token;
@@ -472,6 +479,25 @@ void ofxInstagram::getListOfTaggedObjects(string tagname, int count, string min_
     
     cout << "This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
+}
+//--------------------------------------------------------------
+void ofxInstagram::getListOfTaggedObjectsPagination(string tagname, int count, string max_tagID)
+{
+    stringstream url;
+    url << "https://api.instagram.com/v1/tags/" << tagname << "/media/recent?access_token=" << _auth_token;
+    
+    if (max_tagID.length() != 0) {
+        url << "&max_tag_id=" << max_tagID;
+    }
+    
+    url << "&count=" << count;
+    
+    response = ofLoadURL(url.str());
+    
+    cout << "This is your request: " << url.str()  <<endl;
+    json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
 }
 //--------------------------------------------------------------
 void ofxInstagram::searchForTags(string query)
@@ -483,6 +509,7 @@ void ofxInstagram::searchForTags(string query)
     
     cout << "This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
 }
 #pragma mark - Locations Endpoints
 //--------------------------------------------------------------
@@ -502,6 +529,7 @@ void ofxInstagram::getInfoAboutLocation(string location)
     
     cout << "This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
 }
 //--------------------------------------------------------------
 void ofxInstagram::getRecentMediaFromLocation(string location, string min_timestamp,string max_timestamp,string minID,string maxID)
@@ -529,6 +557,7 @@ void ofxInstagram::getRecentMediaFromLocation(string location, string min_timest
     
     cout << "This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
 }
 //--------------------------------------------------------------
 void ofxInstagram::searchForLocations(string distance, string lat, string lng,string facebook_PlacesID,string foursquareID)
@@ -558,6 +587,7 @@ void ofxInstagram::searchForLocations(string distance, string lat, string lng,st
     
     cout << "This is your request: " << url.str()  <<endl;
     json.parse(response.data);
+    _paginationID = json["pagination"]["next_max_id"].asString();
     
 }
 #pragma mark - Geography Endpoints
@@ -586,6 +616,11 @@ string ofxInstagram::getParsedJSONString() const
     else{
         return ofxJSONElement(response.data).toStyledString();
     }
+}
+//--------------------------------------------------------------
+string ofxInstagram::getMaxIdForPagination()
+{
+    return _paginationID;
 }
 //--------------------------------------------------------------
 string ofxInstagram::getPostMessage(string message)

@@ -38,6 +38,8 @@ class ofxInstagram : public Json::Value {
         string getErrorMessage();
         string getPostMessage(string message);
     
+        string getMaxIdForPagination();
+    
         bool isError();
     
         void parseData();
@@ -147,8 +149,9 @@ class ofxInstagram : public Json::Value {
         void getInfoForTags(string tagname);
     
         // GET List of recently tagged objects
-        void getListOfTaggedObjects(string tagname,int count,string min_tagID = "",string max_tagID = "");
-    
+        void getListOfTaggedObjectsNormal(string tagname,int count,string min_tagID = "",string max_tagID = "");
+        // GET List of recently tagged objects
+        void getListOfTaggedObjectsPagination(string tagname,int count,string max_tagID = "");
         // GET Search Tags
         void searchForTags(string query);
     
@@ -182,6 +185,7 @@ class ofxInstagram : public Json::Value {
         string _clientID;
         string _responseData;
         string _certPath;
+        string _paginationID;
         void clearUrl();
     
         int scrollValue;
