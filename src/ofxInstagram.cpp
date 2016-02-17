@@ -668,9 +668,7 @@ deque <string> ofxInstagram::getVideoURL(){
 	deque<string>elements;
 	for(unsigned int i = 0; i < json["data"].size(); ++i){
         std::string title  = json["data"][i]["videos"]["standard_resolution"]["url"].asString();
-		if(title != ""){
-			elements.push_back(title);
-		}
+		elements.push_back(title);
     }
 	return elements;
 }
