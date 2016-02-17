@@ -16,29 +16,32 @@
 
 meta:
 	ADDON_NAME = ofxInstagram
-	ADDON_DESCRIPTION = Instagram access
-	ADDON_AUTHOR = David Haylock
-	ADDON_TAGS = "instagram, access"
+	ADDON_DESCRIPTION = Instagram access for openFrameworks
+	ADDON_AUTHOR = David Haylock and Krisjanis Rijnieks
+	ADDON_TAGS = "instagram"
 	ADDON_URL = https://github.com/DHaylock/ofxInstagram
 
 common:
-	# dependencies with other addons, a list of them separated by spaces 
-	# or use += in several lines
-	# ADDON_DEPENDENCIES =
-	
-	OFXINSTAGRAM_ROOT = $(OF_ROOT)/addons/ofxInstagram
-	
-	# include search paths, this will be usually parsed from the file system
-	# but if the addon or addon libraries need special search paths they can be
-	# specified here separated by spaces or one per line using +=
-	ADDON_INCLUDES = $(OFXINSTAGRAM_ROOT)/src $(OFXINSTAGRAM_ROOT)/libs/libcurl/include 
-		
-	# any special flag that should be passed to the compiler when using this
-	# addon
-	ADDON_CFLAGS = -I$(OFXINSTAGRAM_ROOT)/src -I$(OFXINSTAGRAM_ROOT)/libs/libcurl/include -lcurl
-
-	# any special flag that should be passed to the linker when using this
-	# addon, also used for system libraries with -lname
-	
-	LIBCURL_LIBS = $(OFXOMXPLAYER_ROOT)/libs/libcurl/lib
-	ADDON_LDFLAGS=-L$(LIBCURL_LIBS) -libcurl
+	linux64:
+	# binary libraries, these will be usually parsed from the file system but some 
+	# libraries need to passed to the linker in a specific order 
+	ADDON_INCLUDES_EXCLUDE = libs/libcurl/include
+	ADDON_PKG_CONFIG_LIBRARIES = libcurl
+linux:
+        # binary libraries, these will be usually parsed from the file system but some
+        # libraries need to passed to the linker in a specific order
+        ADDON_INCLUDES_EXCLUDE = libs/libcurl/include
+        ADDON_PKG_CONFIG_LIBRARIES = libcurl
+win_cb:
+linuxarmv6l:
+        # binary libraries, these will be usually parsed from the file system but some
+        # libraries need to passed to the linker in a specific order
+        ADDON_INCLUDES_EXCLUDE = libs/libcurl/include
+        ADDON_PKG_CONFIG_LIBRARIES = libcurl
+linuxarmv7l:
+        # binary libraries, these will be usually parsed from the file system but some
+        # libraries need to passed to the linker in a specific order
+        ADDON_INCLUDES_EXCLUDE = libs/libcurl/include
+        ADDON_PKG_CONFIG_LIBRARIES = libcurl
+android/armeabi:	
+android/armeabi-v7a:
