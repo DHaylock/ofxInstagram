@@ -17,7 +17,7 @@
 meta:
 	ADDON_NAME = ofxInstagram
 	ADDON_DESCRIPTION = Instagram access for openFrameworks
-	ADDON_AUTHOR = David Haylock and Krisjanis Rijnieks
+	ADDON_AUTHOR = David Haylock and contributors
 	ADDON_TAGS = "instagram"
 	ADDON_URL = https://github.com/DHaylock/ofxInstagram
 
