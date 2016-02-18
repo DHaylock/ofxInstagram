@@ -673,6 +673,15 @@ deque <string> ofxInstagram::getVideoURL(){
 	return elements;
 }
 
+deque <string> ofxInstagram::getProfilePicture(){
+	deque <string> elements;
+	for(unsigned int i = 0; i < json["data"].size(); ++i){
+        std::string profilePicture  = json["data"][i]["user"]["profile_picture"].asString();
+		elements.push_back(profilePicture);
+    }
+	return elements;
+}
+
 //--------------------------------------------------------------
 deque <string> ofxInstagram::getImageID()
 {
