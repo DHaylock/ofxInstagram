@@ -51,6 +51,8 @@ class ofxInstagram : public Json::Value {
         deque <string> getImageURL();
         deque <string> getImageID();
         deque <string> getImageCaption();
+	
+		deque <string> getVideoURL();
     
         deque <basicData> getBasicData();
     

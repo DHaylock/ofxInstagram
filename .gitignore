@@ -1,0 +1,10 @@
+.DS_Store
+**/bin/*
+!**/bin/data
+**/bin/data/*
+!**/bin/data/ca-bundle.crt
+obj
+*.xcworkspace
+*.xcuserdatad
+*~
+config.make
