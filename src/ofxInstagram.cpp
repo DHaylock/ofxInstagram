@@ -657,19 +657,36 @@ deque <basicData> ofxInstagram::getBasicData()
 deque <string> ofxInstagram::getImageURL()
 {
     deque<string>elements;
-    for(unsigned int i = 0; i < json["data"].size(); ++i)
-    {
+    for(unsigned int i = 0; i < json["data"].size(); ++i){
         std::string title  = json["data"][i]["images"]["standard_resolution"]["url"].asString();
         elements.push_back(title);
     }
     return elements;
 }
+
+deque <string> ofxInstagram::getVideoURL(){
+	deque<string>elements;
+	for(unsigned int i = 0; i < json["data"].size(); ++i){
+        std::string title  = json["data"][i]["videos"]["standard_resolution"]["url"].asString();
+		elements.push_back(title);
+    }
+	return elements;
+}
+
+deque <string> ofxInstagram::getProfilePicture(){
+	deque <string> elements;
+	for(unsigned int i = 0; i < json["data"].size(); ++i){
+        std::string profilePicture  = json["data"][i]["user"]["profile_picture"].asString();
+		elements.push_back(profilePicture);
+    }
+	return elements;
+}
+
 //--------------------------------------------------------------
 deque <string> ofxInstagram::getImageID()
 {
     deque<string>elements;
-    for(unsigned int i = 0; i < json["data"].size(); ++i)
-    {
+    for(unsigned int i = 0; i < json["data"].size(); ++i){
         std::string title  = json["data"][i]["caption"]["id"].asString();
         elements.push_back(title);
     }

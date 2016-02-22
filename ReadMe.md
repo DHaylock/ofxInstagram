@@ -13,6 +13,10 @@ Also drop me a line and let me know how you end up using the addon.
 
 - openFrameworks v0.8.0+
 - ofxJson
+- libcurl (Raspberry Pi)
+  ```
+  sudo apt-get install libcurl4-openssl-dev
+  ```
 
 ### What the addon includes
 
