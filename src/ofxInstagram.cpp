@@ -660,7 +660,6 @@ deque <string> ofxInstagram::getImageURL()
     for(unsigned int i = 0; i < json["data"].size(); ++i)
     {
         std::string title  = json["data"][i]["images"]["standard_resolution"]["url"].asString();
-//        cout << title << endl;
         elements.push_back(title);
     }
     return elements;
@@ -672,7 +671,6 @@ deque <string> ofxInstagram::getImageID()
     for(unsigned int i = 0; i < json["data"].size(); ++i)
     {
         std::string title  = json["data"][i]["caption"]["id"].asString();
-        //        cout << title << endl;
         elements.push_back(title);
     }
     return elements;
