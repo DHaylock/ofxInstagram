@@ -25,16 +25,9 @@ void ofxInstagram::drawJSON(int x)
 }
 #pragma mark - Scroll Stuff
 //--------------------------------------------------------------
-void ofxInstagram::mouseClicked(ofVec2f origin)
+void ofxInstagram::mouseScroll(int scrollY)
 {
-    clickOrigin = origin;
-}
-//--------------------------------------------------------------
-void ofxInstagram::mouseReleased(ofVec2f origin)
-{
-    releasePos = origin;
-    scrollAmount = clickOrigin - releasePos;
-    scrollValue += scrollAmount.y;
+    scrollValue += scrollY;
 }
 //--------------------------------------------------------------
 void ofxInstagram::resetScroll()

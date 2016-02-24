@@ -28,8 +28,7 @@ class ofxInstagram : public Json::Value {
         void drawJSON(int x);
     
         void resetScroll();
-        void mouseClicked(ofVec2f origin);
-        void mouseReleased(ofVec2f endPoint);
+        void mouseScroll(int scrollY);
     
         void saveJson(string filename);
     
