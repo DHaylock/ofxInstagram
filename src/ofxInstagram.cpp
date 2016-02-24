@@ -631,6 +631,11 @@ string ofxInstagram::getRawJSONString() const
     }
 }
 //--------------------------------------------------------------
+ofxJSONElement ofxInstagram::getJSON() const
+{
+    return json;
+}
+//--------------------------------------------------------------
 deque <basicData> ofxInstagram::getBasicData()
 {
     deque <basicData> data;
@@ -656,7 +661,7 @@ deque <string> ofxInstagram::getImageURL()
     }
     return elements;
 }
-
+//--------------------------------------------------------------
 deque <string> ofxInstagram::getVideoURL(){
 	deque<string>elements;
 	for(unsigned int i = 0; i < json["data"].size(); ++i){
@@ -665,7 +670,7 @@ deque <string> ofxInstagram::getVideoURL(){
     }
 	return elements;
 }
-
+//--------------------------------------------------------------
 deque <string> ofxInstagram::getProfilePicture(){
 	deque <string> elements;
 	for(unsigned int i = 0; i < json["data"].size(); ++i){
@@ -674,7 +679,6 @@ deque <string> ofxInstagram::getProfilePicture(){
     }
 	return elements;
 }
-
 //--------------------------------------------------------------
 deque <string> ofxInstagram::getImageID()
 {

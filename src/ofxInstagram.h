@@ -32,6 +32,7 @@ class ofxInstagram : public Json::Value {
     
         void saveJson(string filename);
     
+        ofxJSONElement getJSON() const;
         string getParsedJSONString() const;
         string getRawJSONString() const;
         string getErrorMessage();

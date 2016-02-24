@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6385B83D1A8E7A310006B2D6 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6385B83C1A8E7A230006B2D6 /* libcurl.a */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		BEDFEE7400C58EA4E412B757 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B099E6BD1199664C48B177 /* ofxJSONElement.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -65,24 +64,15 @@
 
 /* Begin PBXFileReference section */
 		1645F56257269CD0356320BD /* ofxJSON.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxJSON.h; path = ../../../addons/ofxJSON/src/ofxJSON.h; sourceTree = SOURCE_ROOT; };
-		18CB3CD7CEB5781024F8F74A /* typecheck-gcc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "typecheck-gcc.h"; path = "../../../addons/ofxInstagram/libs/libcurl/include/curl/typecheck-gcc.h"; sourceTree = SOURCE_ROOT; };
-		1FFA7CC02B856601A4C9D233 /* easy.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = easy.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/easy.h; sourceTree = SOURCE_ROOT; };
 		21BDE665988474F1B1F4D302 /* jsoncpp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = jsoncpp.cpp; path = ../../../addons/ofxJSON/libs/jsoncpp/src/jsoncpp.cpp; sourceTree = SOURCE_ROOT; };
 		22ED52AD97DAEFDE78CD38AE /* ofxInstagram.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxInstagram.cpp; path = ../../../addons/ofxInstagram/src/ofxInstagram.cpp; sourceTree = SOURCE_ROOT; };
 		258BD733949A19E1F0702FFA /* ofxThreadedImageLoader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxThreadedImageLoader.h; path = ../../../addons/ofxThreadedImageLoader/src/ofxThreadedImageLoader.h; sourceTree = SOURCE_ROOT; };
 		26A541233BC6F736E758F718 /* ofxJSONElement.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxJSONElement.h; path = ../../../addons/ofxJSON/src/ofxJSONElement.h; sourceTree = SOURCE_ROOT; };
 		2C7CF000B7B4F782C187C353 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = json.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/json.h; sourceTree = SOURCE_ROOT; };
-		35EF6A755544EF58AA5F7538 /* multi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = multi.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/multi.h; sourceTree = SOURCE_ROOT; };
 		45B576A8B106CBE71564781C /* ofxThreadedImageLoader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxThreadedImageLoader.cpp; path = ../../../addons/ofxThreadedImageLoader/src/ofxThreadedImageLoader.cpp; sourceTree = SOURCE_ROOT; };
 		61313493CDB52744E22A604D /* json-forwards.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "json-forwards.h"; path = "../../../addons/ofxJSON/libs/jsoncpp/include/json/json-forwards.h"; sourceTree = SOURCE_ROOT; };
-		6385B83C1A8E7A230006B2D6 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
 		6CAD18D445A8C93F422A7D82 /* ofxInstagram.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxInstagram.h; path = ../../../addons/ofxInstagram/src/ofxInstagram.h; sourceTree = SOURCE_ROOT; };
-		7E6D4CB7009466651AAAF094 /* curlver.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = curlver.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/curlver.h; sourceTree = SOURCE_ROOT; };
-		9BC32061BB984C50FFE569F6 /* mprintf.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = mprintf.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/mprintf.h; sourceTree = SOURCE_ROOT; };
-		A91A01DD63409E8B3F8D7B13 /* curl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = curl.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/curl.h; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
-		CEBE4DF60F5038B83724E03F /* curlbuild.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = curlbuild.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/curlbuild.h; sourceTree = SOURCE_ROOT; };
-		D20B4236AAEE436419EE31BB /* stdcheaders.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = stdcheaders.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/stdcheaders.h; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -106,7 +96,6 @@
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		F2B099E6BD1199664C48B177 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxJSONElement.cpp; path = ../../../addons/ofxJSON/src/ofxJSONElement.cpp; sourceTree = SOURCE_ROOT; };
-		FEF99766F05D5DC4162DE670 /* curlrules.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = curlrules.h; path = ../../../addons/ofxInstagram/libs/libcurl/include/curl/curlrules.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +116,6 @@
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
 				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
-				6385B83D1A8E7A310006B2D6 /* libcurl.a in Frameworks */,
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
@@ -144,15 +132,6 @@
 				6CAD18D445A8C93F422A7D82 /* ofxInstagram.h */,
 			);
 			name = src;
-			sourceTree = "<group>";
-		};
-		23985299AA89C88B5D9B92AC /* libcurl */ = {
-			isa = PBXGroup;
-			children = (
-				6385B83A1A8E7A230006B2D6 /* lib */,
-				72C933415E29851C90BB3EA0 /* include */,
-			);
-			name = libcurl;
 			sourceTree = "<group>";
 		};
 		2865DAEF86B1907A704CA70B /* ofxJSON */ = {
@@ -191,44 +170,10 @@
 			name = json;
 			sourceTree = "<group>";
 		};
-		6385B83A1A8E7A230006B2D6 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				6385B83B1A8E7A230006B2D6 /* osx */,
-			);
-			name = lib;
-			path = ../libs/libcurl/lib;
-			sourceTree = "<group>";
-		};
-		6385B83B1A8E7A230006B2D6 /* osx */ = {
-			isa = PBXGroup;
-			children = (
-				6385B83C1A8E7A230006B2D6 /* libcurl.a */,
-			);
-			path = osx;
-			sourceTree = "<group>";
-		};
-		645B898A3E032075B71878EE /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				23985299AA89C88B5D9B92AC /* libcurl */,
-			);
-			name = libs;
-			sourceTree = "<group>";
-		};
-		72C933415E29851C90BB3EA0 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				C1F1933A004290E5A30C5E11 /* curl */,
-			);
-			name = include;
-			sourceTree = "<group>";
-		};
 		9335AF1CFE31FFFF696CA942 /* ofxInstagram */ = {
 			isa = PBXGroup;
 			children = (
 				08E72D9246A97C573C30D02A /* src */,
-				645B898A3E032075B71878EE /* libs */,
 			);
 			name = ofxInstagram;
 			sourceTree = "<group>";
@@ -279,22 +224,6 @@
 				BBAB23BE13894E4700AA2426 /* GLUT.framework */,
 			);
 			name = "3rd party frameworks";
-			sourceTree = "<group>";
-		};
-		C1F1933A004290E5A30C5E11 /* curl */ = {
-			isa = PBXGroup;
-			children = (
-				A91A01DD63409E8B3F8D7B13 /* curl.h */,
-				CEBE4DF60F5038B83724E03F /* curlbuild.h */,
-				FEF99766F05D5DC4162DE670 /* curlrules.h */,
-				7E6D4CB7009466651AAAF094 /* curlver.h */,
-				1FFA7CC02B856601A4C9D233 /* easy.h */,
-				9BC32061BB984C50FFE569F6 /* mprintf.h */,
-				35EF6A755544EF58AA5F7538 /* multi.h */,
-				D20B4236AAEE436419EE31BB /* stdcheaders.h */,
-				18CB3CD7CEB5781024F8F74A /* typecheck-gcc.h */,
-			);
-			name = curl;
 			sourceTree = "<group>";
 		};
 		CCDC6F9CCF925CC402160B85 /* src */ = {

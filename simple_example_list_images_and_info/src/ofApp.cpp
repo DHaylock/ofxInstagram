@@ -100,5 +100,6 @@ void ofApp::mouseReleased(int x, int y, int button)
 //--------------------------------------------------------------
 void ofApp::mouseScrolled(int x, int y, float scrollX, float scrollY )
 {
+    instagram.mouseScroll(scrollY);
     scrollValue += scrollY*50;
 }
