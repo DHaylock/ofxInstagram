@@ -37,6 +37,13 @@ void ofApp::draw()
         }
     }
     ofPopMatrix();
+    
+    stringstream info;
+    info << "Press 'f' to Find User Data" << endl;
+    info << "Press 'S' to Save the Data" << endl;
+    info << "Press 'r' to Reset the Scroll" << endl;
+    
+    ofDrawBitmapStringHighlight(info.str(), 5,ofGetHeight()-50);
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key)
@@ -83,13 +90,15 @@ void ofApp::mouseDragged(int x, int y, int button)
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button)
 {
-     clickOrigin = ofVec2f(x,y);
+    
 }
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button)
 {
-    releasePos = ofVec2f(x,y);
-    scrollAmount = clickOrigin - releasePos;
-    scrollValue += scrollAmount.y;
+   
 }
-
+//--------------------------------------------------------------
+void ofApp::mouseScrolled(int x, int y, float scrollX, float scrollY )
+{
+    scrollValue += scrollY*50;
+}

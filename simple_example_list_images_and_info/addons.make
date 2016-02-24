@@ -1,3 +1,3 @@
-ofxThreadedImageLoader
 ofxInstagram
 ofxJSON
+ofxThreadedImageLoader
