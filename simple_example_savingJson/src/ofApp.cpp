@@ -74,13 +74,14 @@ void ofApp::mousePressed(int x, int y, int button)
             images[i].isClicked(x, y);
         }
     }
-    
-    // Gives the ability to scroll through the JSON
-    instagram.mouseClicked(ofVec2f(x,y));
 }
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button)
 {
-    // Gives the ability to scroll through the JSON
-    instagram.mouseReleased(ofVec2f(x,y));
+
+}
+//--------------------------------------------------------------
+void ofApp::mouseScrolled(int x, int y, float scrollX, float scrollY)
+{
+    instagram.mouseScroll(scrollY);
 }
