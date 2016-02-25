@@ -98,27 +98,15 @@ void ofApp::mouseDragged(int x, int y, int button)
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button)
 {
-    // Gives the ability to scroll through the JSON
-    instagram.mouseClicked(ofVec2f(x,y));
+
 }
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button)
 {
-    // Gives the ability to scroll through the JSON
-    instagram.mouseReleased(ofVec2f(x,y));
-}
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h)
-{
 
 }
 //--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg)
+void ofApp::mouseScrolled(int x, int y, float scrollX, float scrollY)
 {
-
-}
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo)
-{
-
+    instagram.mouseScroll(scrollY);
 }

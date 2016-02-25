@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-    instagram.setup("YOUR-ACCESS-TOKEN","self");
+    instagram.setup("6305138.976ac05.b29d71cfabee48d4a17883c7ce929fee","self");
     instagram.setCertFileLocation(ofToDataPath("ca-bundle.crt",false));
 }
 //--------------------------------------------------------------
