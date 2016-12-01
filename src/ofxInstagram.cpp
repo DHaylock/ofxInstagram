@@ -644,7 +644,7 @@ deque <basicData> ofxInstagram::getBasicData()
     for(unsigned int i = 0; i < json["data"].size(); ++i)
     {
         data[i].user = json["data"][i]["user"]["username"].asString();
-        data[i].imageID = json["data"][i]["caption"]["id"].asString();
+        data[i].imageID = json["data"][i]["id"].asString();
         data[i].imageURL = json["data"][i]["images"]["low_resolution"]["url"].asString();
         data[i].created_at = json["data"][i]["created_time"].asString();
         data[i].caption = json["data"][i]["caption"]["text"].asString();
